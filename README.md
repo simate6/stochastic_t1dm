@@ -1,18 +1,10 @@
 # Stochastic Virtual Population in Type 1 Diabetes
 
-Accurate, reliable, and efficient estimation of blood glucose dynamics from real-world data is challenging due to the time-varying nature, high uncertainty, and nonlinear interplay of complex processes. This repository contains a stochastic representation of a virtual population by fitting a hierarchical Bayesian model. In total, 500 24h-long sequences, 50 from each of the 10 patients with type 1 diabetes on multiple daily injection therapy is used. Uncertainty is modeled on multiple levels, in physiology and in self-reported events, and intra- and interday variability, and the effect of physical activity are take into account as well. The root-mean-square error between the glucose measurements and the mean of the posterior predictive distribution using the fitted low-rank multivariate normal guide is 12.44 mg/dL. The posterior distributions can be used to simulate realistic intra-, and interday variability in terms of the investigated patient cohort.
+## Implementations
 
-## Implementation
+[Single low-rank multivariate normal guide](svi_single_guide.ipynb)
 
-[Model implementation and fitting](run_svi_t1dm_population.ipynb)
-
-* The probabilistic model is implemented using Numpyro, the deterministic submodel using JAX and the model is end-to-end differentiable.
-* The hierarchical model is fitted using an auto low-rank multivariate normal guide with stochastic variational inference.
-* The total fitting process using 15 samples for the approximation of the evidence lower bound, with 80,000 iterations, takes 2h:25min on a Google TPU v6e-1.
-
-[Plots](/figures)
-
-* Shows the posterior predictive distributions for the 500, 24h-long sample.
+[Modular guide, model with rate of appearance estimation](svi_modular_guide.ipynb)
 
 ## Dataset
 
